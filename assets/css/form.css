@@ -1,0 +1,121 @@
+:root {
+    --light-steel-blue: hsl(218, 33%, 77%);
+    --royal-blue-light: hsl(225, 68%, 53%);
+    --flickr-blue_30: hsla(225, 68%, 53%, 0.3);
+    --carolina-blue: hsl(201, 92%, 47%);
+    --oxford-blue-1: hsl(218, 70%, 18%);
+    --oxford-blue-2: hsl(217, 100%, 12%);
+    --oxford-blue-3: hsl(218, 71%, 11%);
+    --gainsboro_50: hsla(0, 0%, 85%, 0.5);
+    --lavender-web: hsl(225, 67%, 91%);
+    --sonic-silver: hsl(0, 0%, 47%);
+    --light-gray: hsl(0, 0%, 84%);
+    --cultured: hsl(0, 0%, 97%);
+    --black_10: hsla(0, 0%, 0%, 0.1);
+    --black_8: hsla(0, 0%, 0%, 0.08);
+    --white: hsl(0, 0%, 100%);
+    --black: hsl(0, 0%, 0%);
+    --jet: hsl(0, 0%, 20%);  
+}
+
+
+body {
+    background: var(--light-gray);
+    font-family: 'Poppins', sans-serif;
+}
+
+#form {
+    width: 350px;
+    margin: 13vh auto 0 auto;
+    padding: 30px;
+    background-color: var(--cultured);
+    border-radius: 8px;
+    font-size: 15px;
+}
+
+#form h1 {
+    color: var(--oxford-blue-1);
+    text-align: center;
+}
+
+#form button {
+    padding: 10px;
+    margin-top: 15px;
+    margin-left: 3px;
+    width: 100%;
+    color: white;
+    background-color: var(--carolina-blue);
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+#form button:hover {
+    color: white;
+    background-color: var(--royal-blue-light);
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.input-control {
+    display: flex;
+    flex-direction: column;
+    
+}
+
+.input-control input {
+    border: 2px solid #f0f0f0;
+	border-radius: 6px;
+	display: block;
+	font-size: 12px;
+	padding: 10px;
+	width: 95%;
+}
+
+.input-control input:focus {
+    outline: 0;
+}
+
+.input-control.success input {
+    border-color: #09c372;
+}
+
+.input-control.error input {
+    border-color: #ff3860;
+}
+
+.input-control .error {
+    color: #ff3860;
+    font-size: 9px;
+    height: 13px;
+}
+
+textarea {
+    border: 2px solid #f0f0f0;
+	border-radius: 6px;
+	display: block;
+	font-size: 12px;
+	padding: 10px;
+	width: 95%;
+}
+.btn {
+    text-decoration: none;
+    color: inherit;
+    background-color: var(--carolina-blue);
+    color: var(--white);
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    padding: 15px 20px;
+    text-align: center;
+    border-radius: 4px;
+  }
+.btn:hover {
+    color: white;
+    background-color: var(--royal-blue-light);
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+.container {
+    margin-top: 20px;
+  }

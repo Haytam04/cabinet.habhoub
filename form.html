@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="shortcut icon" href="./favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="./assets/css/form.css">
+
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700;800&family=Roboto:wght@400;500;600&display=swap"
+    rel="stylesheet">
+
+    <title>Reservation</title>
+
+</head>
+<body>
+    <div class="container">
+        <a href="index.html" class="btn">précédent</a>
+        <form id="form" onsubmit="return validateForm();">
+            <h1>Réservation</h1>
+
+            <div class="input-control">
+                <label for="fullName">Nom Complet :</label>
+                <input id="fullName" name="fullName" type="text" required>
+            </div>
+
+            <div class="input-control">
+                <label for="phoneNumber">Numero de téléphone :</label>
+                <input id="phoneNumber" name="phoneNumber" type="text" required>
+            </div>
+
+            <div class="input-control">
+                <label for="email">Email :</label>
+                <input id="email" name="email" type="text">
+            </div>
+            
+            <div class="input-control">
+                <label for="Ville">Ville :</label>
+                <input id="Ville" name="Ville" type="text" >
+            </div>
+
+            <label for="description">Votre Message :</label>
+            <textarea id="description" name="description"></textarea>
+            
+           
+            <button type="submit" class="btn">Réserver </button>
+        </form>
+        <p id="errorMessage" style="color: red;"></p>
+    </div>
+
+    <script>
+        function validateForm() {
+            var fullName = document.getElementById('fullName').value.trim();
+            var phoneNumber = document.getElementById('phoneNumber').value.trim();
+            var email = document.getElementById('email').value.trim();
+            var Ville = document.getElementById('Ville').value.trim();
+            var description = document.getElementById('description').value.trim();
+
+            var errorMessage = '';
+
+            // Validation du numéro de téléphone : doit contenir exactement 10 chiffres
+            var phonePattern = /^\d{10}$/;
+            if (!phonePattern.test(phoneNumber)) {
+                errorMessage += 'Le numéro de téléphone doit contenir exactement 10 chiffres.\n';
+            }
+
+            // Affiche le message d'erreur si la validation échoue
+            if (errorMessage) {
+                document.getElementById('errorMessage').textContent = errorMessage;
+                return false; // Empêche l'envoi du formulaire
+            } else {
+                document.getElementById('errorMessage').textContent = '';
+                sendToWhatsApp(fullName, phoneNumber, email, Ville, description);
+                return false; // Empêche l'envoi du formulaire après avoir envoyé les données à WhatsApp
+            }
+        }
+
+        function sendToWhatsApp(fullName, phoneNumber, email, Ville, description) {
+            var whatsappNumber = '+212602430970'; // Remplacez par votre numéro WhatsApp
+            var message = `Nom Complet: ${encodeURIComponent(fullName)}%0A` +
+                          `Numéro de Téléphone: ${encodeURIComponent(phoneNumber)}%0A` +
+                          `Email: ${encodeURIComponent(email)}%0A` +
+                          `Ville: ${encodeURIComponent(Ville)}%0A` +
+                          `Description: ${encodeURIComponent(description)}`;
+
+            var whatsappURL = `https://api.whatsapp.com/send?phone=${whatsappNumber}&text=${message}`;
+            window.open(whatsappURL, '_blank');
+        }
+    </script>
+    
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+    
+</body>
+</html>
